@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reto de la Oración Simple</title>
+
+  <!-- FUENTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <!-- BOTÓN MODO OSCURO -->
+  <button onclick="toggleModo()" class="start-btn" style="position:absolute; top:10px; right:10px;">
+    🌙
+  </button>
+
+  <div id="game-root">
+
+    <!-- PANTALLA INICIO -->
+    <div class="screen active" id="s-inicio">
+      <p class="title-big">Reto de la Oración Simple</p>
+
+      <p class="subtitle">
+        5 preguntas aleatorias, tiempo limitado<br>
+        ¡Demuestra tu conocimiento!
+      </p>
+
+      <!-- NIVELES -->
+      <select id="nivel" class="start-btn">
+        <option value="10">Fácil (10s)</option>
+        <option value="7">Medio (7s)</option>
+        <option value="5">Difícil (5s)</option>
+      </select>
+
+      <button class="start-btn" onclick="iniciarJuego()">Iniciar juego</button>
+    </div>
+
+    <!-- PANTALLA JUEGO -->
+    <div class="screen" id="s-juego">
+
+      <div class="hud">
+        <span>Pregunta <strong id="prog-actual">1</strong>/5</span>
+        <span>⭐ <strong id="hud-puntos">0</strong></span>
+        <span>⏱ <strong id="timer-num" class="ok">10</strong></span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="prog-fill"></div>
+      </div>
+
+      <div class="card">
+        <p class="pregunta-text" id="pregunta-txt"></p>
+      </div>
+
+      <div class="opciones" id="opciones"></div>
+    </div>
+
+    <!-- PANTALLA RESULTADO -->
+    <div class="screen" id="s-resultado">
+      <div class="feedback-emoji" id="res-emoji"></div>
+      <p class="title-big" id="res-msg"></p>
+
+      <div class="card score-card">
+        <span class="score-num" id="res-score"></span>
+        <span class="score-label">de 5 preguntas correctas</span>
+      </div>
+
+      <p class="subtitle" id="res-sub"></p>
+
+      <button class="start-btn" onclick="reiniciar()">Jugar otra vez</button>
+    </div>
+
+  </div>
+
+  <!-- 🔊 SONIDOS -->
+  <audio id="inicio-sound" src="inicio.mp3.mp3"></audio>
+  <audio id="sonido-correcto" src="correcto.mp3.mp3"></audio>
+  <audio id="sonido-error" src="error.mp3.mp3"></audio>
+
+  <!-- 🎵 MÚSICA DE FONDO -->
+  <audio id="bg-music" src="musica.mp3.mp3" loop></audio>
+
+  <!-- SCRIPT -->
+  <script src="./script.js"></script>
+
+</body>
+</html>
